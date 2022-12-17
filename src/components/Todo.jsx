@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "./Input";
 import ListItem from "./ListItem";
+import StatusBar from "./StatusBar";
 
 const Todo = () => {
   const lists = [
@@ -31,9 +32,10 @@ const Todo = () => {
       <h1>Todo</h1>
       <Input />
       <hr />
+      <StatusBar lists={lists} />
       <ul className="list-group">
         {lists.map((list) => (
-          <ListItem text={list.text} isDone={list.isDone} key={list.id} />
+          <ListItem list={list} key={list.id} />
         ))}
       </ul>
     </div>
