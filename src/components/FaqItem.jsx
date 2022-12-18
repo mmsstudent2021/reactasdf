@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 
-function FaqItem({ faqList }) {
-  const [showAnswer, setShowAnswer] = useState(false);
-  const showQuestionBg = showAnswer ? "bg-primary text-white" : "";
+function FaqItem({ faqList, openAnswer }) {
+  // const [showAnswer, setShowAnswer] = useState(false);
+  const showQuestionBg = faqList.showAnswer ? "bg-primary text-white" : "";
   return (
     <div className="m-3">
       <div
-        onClick={() => setShowAnswer(!showAnswer)}
+        onClick={() => openAnswer(faqList.id)}
         className={` ${showQuestionBg} border d-flex  border-primary rounded p-3 text-primary`}
       >
         {faqList.question}
-        <span className={` ms-auto ${showAnswer ? "down" : ""}`}>&gt; </span>
+        <span className={` ms-auto ${faqList.showAnswer ? "down" : ""}`}>
+          &gt;{" "}
+        </span>
       </div>
-      {showAnswer && <div className="p-3">{faqList.answer}</div>}
+      {faqList.showAnswer && (
+        <div className="p-3 ani-effect">
+          {faqList.answer}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+          doloribus, amet sunt labore illum laudantium, aut velit fugit delectus
+          tempora consequuntur architecto minus natus, quas dolorum nobis
+          perspiciatis atque nemo!
+        </div>
+      )}
     </div>
   );
 }

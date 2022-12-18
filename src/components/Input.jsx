@@ -1,8 +1,11 @@
 import React, { useRef } from "react";
 
-const Input = () => {
+const Input = ({ createList }) => {
   const inputText = useRef();
-  const showAlert = () => console.log(inputText.current.value);
+  const showAlert = () => {
+    createList(inputText.current.value);
+    inputText.current.value = "";
+  };
 
   // select input => docu.asldkfjlkasdjf
   // input.value
